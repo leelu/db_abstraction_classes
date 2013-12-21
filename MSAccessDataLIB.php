@@ -289,8 +289,28 @@
 		}
 
 		
-		public function Delete()
+		/**
+		*	@brief Performs a delete query.
+		*
+		*	@param string the query string
+		*	@return 
+		*/
+		public function Delete($Query)
 		{
+			if("" == $Query)
+			{
+				return;
+			}
+			try
+			{
+				odbc_exec($this->DBHandle, $Query);				
+			} 
+			catch(Exception $e)
+			{
+				throw new DataException(DataException::BAD_QUERY,$e->getMessage() . ", Query => " . $Query);
+			}
+
+			return true;
 		}
 
 	}  
