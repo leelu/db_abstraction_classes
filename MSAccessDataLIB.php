@@ -197,11 +197,11 @@ class MSAccessDataLIB
 			{ 
 				if($Key && isset($Row[$Key]))
 				{
-					$Results[$Row[$Key]] = $Row;
+					$Results[$Row[$Key]][] = $Row;
 				}
 				else
 				{
-					$Results[count($Results)] = $Row;
+					$Results[count($Results)][] = $Row;
 				}
 				$i++;
 			} 
